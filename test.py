@@ -1,18 +1,65 @@
-from datetime import datetime
-import os
+import numpy
+from scipy.optimize import linprog
+import utils
+import random
+import sys
+import warnings
 
+warnings.filterwarnings("ignore")
+c = [1, 1, 1]
 
-def get_results_path():
-    if not hasattr(get_results_path, "counter"):
-        get_results_path.counter = 0
-    if not hasattr(get_results_path, "current_time"):
-        now = datetime.now()
-        get_results_path.current_time = now.strftime("%H%M%S")
-    if os.path.exists('results/' + get_results_path.current_time) is False:
-        os.mkdir('results/' + get_results_path.current_time)
+A = [
+    [-2, -3, -1],
+    [-2, -1, -3]
+]
 
-    path = 'results/%s/%s_%d_results.xml' % (get_results_path.current_time,
-                                             get_results_path.current_time,
-                                             get_results_path.counter)
-    get_results_path.counter += 1
-    return path
+while True:
+    load = [random.randint(-222, 0) for n in range(4)]
+
+    xd = (0, None)  # Default config
+    xd_temp = (0, None)
+    xn = (0, None)  # North config
+    xe = (0, None)  # East config
+    xs = (0, None)  # South config
+    xw = (0, None)  # West config
+
+    b = [load[utils.DIRECTION.NORTH.value], load[utils.DIRECTION.SOUTH.value]]
+    result = linprog(c, A_ub=A, b_ub=b, bounds=[xd_temp, xn, xs], method='highs')  # interior-point
+    xd_temp, xn, xs = result.x
+
+    print("load:", load, "\n")
+
+    b = [load[utils.DIRECTION.EAST.value], load[utils.DIRECTION.WEST.value]]
+    result = linprog(c, A_ub=A, b_ub=b, bounds=[xd, xe, xw], method='highs')
+    xd, xe, xw = result.x
+
+    xd = max(xd_temp, xd)
+
+    x_all = [xd, xn, xe, xs, xw]
+    index = 0
+    for x in x_all:
+        print(utils.CONFIGURATIONS[index], x)
+        index += 1
+
+    print("press a key\n\n\n\n")
+    sys.stdin.read(1)
+
+# xd = (0, None)  # Default config
+# xd_temp = 0
+# xn = (0, None)  # North config
+# xe = (0, None)  # East config
+# xs = (0, None)  # South config
+# xw = (0, None)  # West config
+#
+#
+# b = [-146, -35]
+# print("b:", b, "\n")
+# result = linprog(c, A_ub=A, b_ub=b, bounds=[xd, xe, xw], method='highs')
+# xd, xe, xw = result.x
+# xd = max(xd_temp, xd)
+#
+# x_all = [xd, xn, xe, xs, xw]
+# index = 0
+# for x in x_all:
+#     print(utils.CONFIGURATIONS[index], x)
+#     index += 1
