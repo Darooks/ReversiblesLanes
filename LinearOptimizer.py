@@ -1,27 +1,35 @@
 import numpy
 from scipy.optimize import linprog
-
-c = [1, 1, 1, 1, 1]
-A = [[-666, -444, -222, -444, -444],
-     [-444, -666, -444, -222, -444],
-     [-222, -444, -666, -444, -444],
-     [-444, -222, -444, -666, -444]]
-b = [-1000, -50, -500, -50]  # current vehicular load
-x0_b = (0, None)
-x1_b = (0, None)
-x2_b = (0, None)
-x3_b = (0, None)
-x4_b = (0, None)
-
-# res = linprog(c, A_ub=A, b_ub=b, bounds=[x0_b, x1_b, x2_b, x3_b, x4_b], method='highs')
-# for x in res.x:
-#      print('{:.20f}'.format(x))
-#
-# myMax = numpy.where(res.x == numpy.amax(res.x)) # get index of max value
-# print(myMax[0][0])
+from utils import *
+import random
+import sys
+import warnings
 
 
 class LinearOptimizer:
-    def getConfig(self, loadPerDir):
-        res = linprog(c, A_ub=A, b_ub=loadPerDir, bounds=[x0_b, x1_b, x2_b, x3_b, x4_b], method='highs')
-        return numpy.where(res.x == numpy.amax(res.x))
+    def __init__(self):
+        self.c = [1, 1, 1]
+        self.A = [[-2, -3, -1],
+                  [-2, -1, -3]]
+        self.x_bounds = [(0, None), (0, None), (0, None)]  # x bound for utils.CONFIGURATIONS
+
+    def get_config_index(self, load_per_dir):
+        norm_load = [n * (-1) for n in load_per_dir]  # we want to maximize so multiply by -1 all values
+        x_all = [0]*len(DIRECTION)
+
+        result = linprog(self.c,
+                         A_ub=self.A,
+                         b_ub=[norm_load[DIRECTION.NORTH.value], norm_load[DIRECTION.SOUTH.value]],
+                         bounds=self.x_bounds,
+                         method='highs')
+        xd_temp, x_all[DIRECTION.NORTH.value], x_all[DIRECTION.SOUTH.value] = result.x
+
+        result = linprog(self.c,
+                         A_ub=self.A,
+                         b_ub=[norm_load[DIRECTION.EAST.value], norm_load[DIRECTION.WEST.value]],
+                         bounds=self.x_bounds,
+                         method='highs')
+        xd, x_all[DIRECTION.EAST.value], x_all[DIRECTION.WEST.value] = result.x
+        x_all[DIRECTION.DEFAULT.value] = max(xd_temp, xd)
+
+        return x_all.index(max(x_all))

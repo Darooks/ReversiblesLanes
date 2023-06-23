@@ -74,9 +74,17 @@ class FuzzyDetector:
         pyplot.clf()
 
     def get_cngst_lvl(self, avg_speed, density):
+        if avg_speed is None:
+            avg_speed = 0
+        if density is None:
+            density = 0
+
         values = {self.avg_speed: avg_speed, self.density: density}
         result = self.rules(values)
-        if result <= 5:
+
+        if result is None:
+            return -1
+        elif result <= 5:
             return 1
         elif result <= 15:
             return 2
@@ -112,7 +120,9 @@ class FuzzyDetector:
         self.rules = self._set_rules()
 
 
-# fd = FuzzyDetection()
+# fd = FuzzyDetector()
+# fd.plot_cngst()
+# fd.plot_density_domain()
 # print(fd.get_cngst_lvl(10, 166))
 # print(fd.get_cngst_lvl(50, 25))
 # print(fd.get_cngst_lvl(35, 100))

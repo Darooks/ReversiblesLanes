@@ -1,21 +1,22 @@
 from enum import Enum
 import random
 
+GEO_DIRS = ['north', 'east', 'south', 'west']
+CONFIGURATIONS = ['north', 'east', 'south', 'west', 'default']
+DIRECTIONS = ['north_south', 'east_west', 'south_north', 'west_east']
+
 
 class DIRECTION(Enum):
     NORTH = 0
-    WEST = 1
+    EAST = 1
     SOUTH = 2
-    EAST = 3
+    WEST = 3
     DEFAULT = 4
 
 
-DIRECTIONS = ['north', 'east', 'south', 'west']
-
-
 def get_random_route() -> str:
-    source = random.choice(DIRECTIONS)
-    destination_list = DIRECTIONS
+    source = random.choice(GEO_DIRS)
+    destination_list = GEO_DIRS
     destination_list.remove(source)
     destination = random.choice(destination_list)
     route = source + '_' + destination

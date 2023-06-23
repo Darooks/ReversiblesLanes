@@ -5,39 +5,39 @@ import os
 from Manager import Manager
 
 CONFIGURATIONS = {
+    DIRECTION.DEFAULT: 'cfg/default_configuration/default.sumo.cfg',
     DIRECTION.NORTH: 'cfg/n_configuration/n.sumo.cfg',
     DIRECTION.WEST: 'cfg/w_configuration/w.sumo.cfg',
     DIRECTION.SOUTH: 'cfg/s_configuration/s.sumo.cfg',
     DIRECTION.EAST: 'cfg/e_configuration/e.sumo.cfg',
-    DIRECTION.DEFAULT: 'cfg/default_configuration/default.sumo.cfg',
 }
 
-MAX_STEPS = 10000  # 1h = 360000
+MAX_STEPS = 360000  # 10000  # 1h = 360000
 CONFIG_INDEX = 5
 SAVE_PATH = 'testSave.xml'
 
 
-def test_get_hc_route():
-    if not hasattr(test_get_hc_route, "counter"):
-        test_get_hc_route.counter = 0
-
-    if test_get_hc_route.counter == 0:
-        route = "north_south"
-    else:
-        route = "north_west"
-    test_get_hc_route.counter += 1
-    return route
-
-
-def test_add_vehicle(veh_num: int):
-    vid = "v.%d" % veh_num
-    route_id = "north_east"  # test_get_hc_route()
+def add_vehicle_fixed_route(step: int):
+    route_id = "north_south"
+    vid = "v.%s.%d" % (route_id, step)
     traci.vehicle.add(vid, route_id, typeID="vtypeauto")
 
+    # route_id = "north_west"
+    # vid = "v.%s.%d" % (route_id, step)
+    # traci.vehicle.add(vid, route_id, typeID="vtypeauto")
+    #
+    # route_id = "north_east"
+    # vid = "v.%s.%d" % (route_id, step)
+    # traci.vehicle.add(vid, route_id, typeID="vtypeauto")
 
-def add_vehicle(step: int):
-    vid = "v.%d" % step
+    # route_id = "south_west"
+    # vid = "v.%s.%d" % (route_id, step)
+    # traci.vehicle.add(vid, route_id, typeID="vtypeauto")
+
+
+def add_vehicle_random(step: int):
     route_id = get_random_route()
+    vid = "v.%s.%d" % (route_id, step)
     traci.vehicle.add(vid, route_id, typeID="vtypeauto")
 
 
@@ -68,28 +68,27 @@ def get_sumo_cmd(is_gui=False):
 
 def main():
     id_cnt = 0
-    manager = Manager()
+    traffic_manager = Manager()
 
     for i in range(1):
         step_cnt = 0
 
-        sumo_cmd = get_sumo_cmd()
+        sumo_cmd = get_sumo_cmd(False)
 
         traci.start(sumo_cmd)
-        # traci.lane.getLastStepVehicleNumber()
 
         if os.path.exists(SAVE_PATH):
             traci.simulation.loadState(SAVE_PATH)
 
         while step_cnt < MAX_STEPS:
             traci.simulationStep()
-            manager.simulationStep(traci)
+            traffic_manager.simulationStep(traci)
 
             step_cnt += 1
 
             if step_cnt > 2:
-                # add_vehicle(step_cnt)
-                test_add_vehicle(id_cnt)
+                # add_vehicle_random(step_cnt)
+                add_vehicle_fixed_route(id_cnt)
                 id_cnt += 1
         traci.simulation.saveState(SAVE_PATH)
         traci.close()
@@ -100,3 +99,13 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+'''
+TODO:
+1. Czy dobrze sumo przeskalowuje 100m na 1km. Wyliczylbym czy czas podrozy pojazdu jest prawidlowy.
+Jezeli samochod jedzie 12m/s to powinien przebyc 1km w mniej niz 10s
+
+2. Dodatkowy parametr w FuzzyDetector? Tj. Waiting Time.
+
+3. Jak wchodze w 4 i 5 poziom kongestii - jaka jest srednia predkosc? Jaka jest gęstość?    
+'''
