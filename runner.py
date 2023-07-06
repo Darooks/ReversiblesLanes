@@ -30,9 +30,9 @@ def add_vehicle_fixed_route(step: int):
     # vid = "v.%s.%d" % (route_id, step)
     # traci.vehicle.add(vid, route_id, typeID="vtypeauto")
 
-    # route_id = "south_west"
-    # vid = "v.%s.%d" % (route_id, step)
-    # traci.vehicle.add(vid, route_id, typeID="vtypeauto")
+    route_id = "east_west"
+    vid = "v.%s.%d" % (route_id, step)
+    traci.vehicle.add(vid, route_id, typeID="vtypeauto")
 
 
 def add_vehicle_random(step: int):
@@ -73,9 +73,9 @@ def main():
     for i in range(1):
         step_cnt = 0
 
-        sumo_cmd = get_sumo_cmd(False)
+        sumo_cmd = get_sumo_cmd(is_gui=False)
 
-        traci.start(sumo_cmd)
+        traci.start(sumo_cmd, verbose=True)
 
         if os.path.exists(SAVE_PATH):
             traci.simulation.loadState(SAVE_PATH)
