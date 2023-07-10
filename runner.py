@@ -18,25 +18,6 @@ CONFIG_INDEX = 5
 SAVE_PATH = 'testSave.xml'
 
 
-def add_vehicle_fixed_route(step: int):
-    id_cnt = 0
-    route_id = "north_south"
-    vid = "v.%s.%d.%d" % (route_id, step, id_cnt)
-    traci.vehicle.add(vid, route_id, typeID="vtypeauto")
-
-    # route_id = "north_west"
-    # vid = "v.%s.%d" % (route_id, step)
-    # traci.vehicle.add(vid, route_id, typeID="vtypeauto")
-    #
-    # route_id = "north_east"
-    # vid = "v.%s.%d" % (route_id, step)
-    # traci.vehicle.add(vid, route_id, typeID="vtypeauto")
-
-    # route_id = "east_west"
-    # vid = "v.%s.%d" % (route_id, step)
-    # traci.vehicle.add(vid, route_id, typeID="vtypeauto")
-
-
 def get_results_path():
     if not hasattr(get_results_path, "counter"):
         get_results_path.counter = 0

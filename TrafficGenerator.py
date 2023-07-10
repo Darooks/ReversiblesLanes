@@ -16,6 +16,25 @@ def get_random_route_from_src(source) -> str:
     route = source + '_' + destination
     return route
 
+
+def add_vehicle_fixed_route(traci, step: int):
+    id_cnt = 0
+    route_id = "north_south"
+    vid = "v.%s.%d.%d" % (route_id, step, id_cnt)
+    traci.vehicle.add(vid, route_id, typeID="vtypeauto")
+
+    # route_id = "north_west"
+    # vid = "v.%s.%d" % (route_id, step)
+    # traci.vehicle.add(vid, route_id, typeID="vtypeauto")
+    #
+    # route_id = "north_east"
+    # vid = "v.%s.%d" % (route_id, step)
+    # traci.vehicle.add(vid, route_id, typeID="vtypeauto")
+
+    # route_id = "east_west"
+    # vid = "v.%s.%d" % (route_id, step)
+    # traci.vehicle.add(vid, route_id, typeID="vtypeauto")
+
 class TrafficGenerator():
     def set_dir(self, dir):
         if dir in GEO_DIRS:
