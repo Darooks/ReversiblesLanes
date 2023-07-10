@@ -111,6 +111,8 @@ class Manager:
 
         current_load = get_road_load(traci)
         config_index = self.lo.get_config_index(current_load)
-        print("Config:", utils.CONFIGURATIONS[config_index], "Current Load:", current_load)
+
+        if verbose:
+            print("Config:", utils.CONFIGURATIONS[config_index], "Current Load:", current_load)
         return config_index
 
