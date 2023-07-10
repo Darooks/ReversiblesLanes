@@ -4,6 +4,7 @@ from datetime import datetime
 import os
 from Manager import Manager
 from TrafficGenerator import *
+import time
 
 CONFIGURATIONS = {
     DIRECTION.DEFAULT: 'cfg/default_configuration/default.sumo.cfg',
@@ -46,11 +47,12 @@ def get_sumo_cmd(is_gui=False):
 def main():
     traffic_manager = Manager()
     traffic_generator = TrafficGenerator(type="balanced")
+    is_gui = False
 
     for i in range(1):
         step_cnt = 0
 
-        sumo_cmd = get_sumo_cmd(is_gui=True)
+        sumo_cmd = get_sumo_cmd(is_gui=is_gui)
 
         traci.start(sumo_cmd, verbose=True)
 
@@ -58,6 +60,9 @@ def main():
             traci.simulation.loadState(SAVE_PATH)
 
         while step_cnt < MAX_STEPS:
+            if is_gui is False:
+                time.sleep(0.1)
+
             traci.simulationStep()
             traffic_manager.simulationStep(traci, True)
             traffic_generator.simulationStep(traci, step_cnt)
