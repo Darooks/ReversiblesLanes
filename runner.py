@@ -3,6 +3,7 @@ from utils import *
 from datetime import datetime
 import os
 from Manager import Manager
+from TrafficGenerator import *
 
 CONFIGURATIONS = {
     DIRECTION.DEFAULT: 'cfg/default_configuration/default.sumo.cfg',
@@ -18,8 +19,9 @@ SAVE_PATH = 'testSave.xml'
 
 
 def add_vehicle_fixed_route(step: int):
+    id_cnt = 0
     route_id = "north_south"
-    vid = "v.%s.%d" % (route_id, step)
+    vid = "v.%s.%d.%d" % (route_id, step, id_cnt)
     traci.vehicle.add(vid, route_id, typeID="vtypeauto")
 
     # route_id = "north_west"
@@ -30,15 +32,9 @@ def add_vehicle_fixed_route(step: int):
     # vid = "v.%s.%d" % (route_id, step)
     # traci.vehicle.add(vid, route_id, typeID="vtypeauto")
 
-    route_id = "east_west"
-    vid = "v.%s.%d" % (route_id, step)
-    traci.vehicle.add(vid, route_id, typeID="vtypeauto")
-
-
-def add_vehicle_random(step: int):
-    route_id = get_random_route()
-    vid = "v.%s.%d" % (route_id, step)
-    traci.vehicle.add(vid, route_id, typeID="vtypeauto")
+    # route_id = "east_west"
+    # vid = "v.%s.%d" % (route_id, step)
+    # traci.vehicle.add(vid, route_id, typeID="vtypeauto")
 
 
 def get_results_path():
@@ -67,13 +63,13 @@ def get_sumo_cmd(is_gui=False):
 
 
 def main():
-    id_cnt = 0
     traffic_manager = Manager()
+    traffic_generator = TrafficGenerator(type="balanced")
 
     for i in range(1):
         step_cnt = 0
 
-        sumo_cmd = get_sumo_cmd(is_gui=False)
+        sumo_cmd = get_sumo_cmd(is_gui=True)
 
         traci.start(sumo_cmd, verbose=True)
 
@@ -82,14 +78,11 @@ def main():
 
         while step_cnt < MAX_STEPS:
             traci.simulationStep()
-            traffic_manager.simulationStep(traci)
+            traffic_manager.simulationStep(traci, True)
+            traffic_generator.simulationStep(traci, step_cnt)
 
             step_cnt += 1
-
-            if step_cnt > 2:
-                # add_vehicle_random(step_cnt)
-                add_vehicle_fixed_route(id_cnt)
-                id_cnt += 1
+            print("step_cnt:", step_cnt)
         traci.simulation.saveState(SAVE_PATH)
         traci.close()
 

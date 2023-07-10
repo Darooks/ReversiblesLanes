@@ -86,7 +86,7 @@ class Manager:
             if route_id in utils.DIRECTIONS:
                 self.veh_ln_cnts[route_id] += 1
 
-    def is_cngst_too_high(self, traci):
+    def is_cngst_too_high(self, traci, verbose=False):
         avg_speed_lane = get_avg_speed(traci)
         density_lane = get_density(traci)
         cngst_lvl = -1
@@ -94,18 +94,23 @@ class Manager:
         for lane_id in avg_speed_lane.keys():
             cngst_lvl = max(cngst_lvl, self.fd.get_cngst_lvl(avg_speed_lane[lane_id], density_lane[lane_id]))
 
+        if verbose:
+            print("Congestion level =", cngst_lvl)
         if cngst_lvl >= 4.0:
             return True
         return False
 
-    def simulationStep(self, traci):
+    def simulationStep(self, traci, verbose=False):
         # self._count_veh_on_lanes(traci)
         # print(self.veh_ln_cnts)
+        if verbose:
+            print("Actual road traffic =", get_road_load(traci))
 
-        # if self.is_cngst_too_high(traci) is not True:
-        #     return
+        if self.is_cngst_too_high(traci, verbose) is not True:
+            return None
 
         current_load = get_road_load(traci)
-        config = self.lo.get_config_index(current_load)
-        print("Config:", utils.CONFIGURATIONS[config], "Current Load:", current_load)
+        config_index = self.lo.get_config_index(current_load)
+        print("Config:", utils.CONFIGURATIONS[config_index], "Current Load:", current_load)
+        return config_index
 
