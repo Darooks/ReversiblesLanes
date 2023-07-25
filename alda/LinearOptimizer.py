@@ -1,9 +1,7 @@
-import numpy
 from scipy.optimize import linprog
-from utils import *
-import random
 import sys
-import warnings
+sys.path.append('C:\\Projects\\SUMO-SIMULATOR\\ReversibleLanesIntersection')
+from utils import *
 
 
 class LinearOptimizer:

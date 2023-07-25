@@ -1,11 +1,9 @@
-import numpy
-from scipy.optimize import linprog
 import utils
 import random
 import sys
 import warnings
 from LinearOptimizer import LinearOptimizer
-from FuzzyDetector import FuzzyDetector
+
 
 def validate_linear_optimizer():
     warnings.filterwarnings("ignore")

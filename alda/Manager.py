@@ -1,6 +1,6 @@
 from FuzzyDetector import FuzzyDetector
 from LinearOptimizer import LinearOptimizer
-import utils
+from utils import *
 
 
 def get_road_load(traci):
@@ -8,7 +8,7 @@ def get_road_load(traci):
     load_road_cnts = dict()   # counters of vehicles for North, East, South, West roads
     result = []
 
-    for direction in utils.GEO_DIRS:
+    for direction in GEO_DIRS:
         load_road_cnts[direction] = 0
 
     for veh_id in curr_vehicles:
@@ -19,7 +19,7 @@ def get_road_load(traci):
             continue
         load_road_cnts[lane_id[0]] += 1
 
-    for direction in utils.GEO_DIRS:
+    for direction in GEO_DIRS:
         result.append(load_road_cnts[direction])
 
     return result
@@ -70,11 +70,12 @@ class Manager:
         self.fd = FuzzyDetector()
         self.lo = LinearOptimizer()
         self.veh_ln_cnts = dict()
-        for n in utils.DIRECTIONS:
+        self.curr_config = CONFIGURATIONS[DIRECTION.DEFAULT.value]
+        for n in DIRECTIONS:
             self.veh_ln_cnts[n] = 0
 
     def _reset_veh_ln_cnts(self):
-        for dir in utils.DIRECTIONS:
+        for dir in DIRECTIONS:
             self.veh_ln_cnts[dir] = 0
 
     def _count_veh_on_lanes(self, traci):
@@ -83,7 +84,7 @@ class Manager:
         self._reset_veh_ln_cnts()
         for veh_id in curr_vehicles:
             route_id = traci.vehicle.getRouteID(veh_id)  # traci.vehicle.getLaneID
-            if route_id in utils.DIRECTIONS:
+            if route_id in DIRECTIONS:
                 self.veh_ln_cnts[route_id] += 1
 
     def is_cngst_too_high(self, traci, verbose=False):
@@ -100,9 +101,10 @@ class Manager:
             return True
         return False
 
+    def get_config(self):
+        return self.curr_config
+
     def simulationStep(self, traci, verbose=False):
-        # self._count_veh_on_lanes(traci)
-        # print(self.veh_ln_cnts)
         if verbose:
             print("Actual road traffic =", get_road_load(traci))
 
@@ -113,6 +115,10 @@ class Manager:
         config_index = self.lo.get_config_index(current_load)
 
         if verbose:
-            print("Config:", utils.CONFIGURATIONS[config_index], "Current Load:", current_load)
-        return config_index
+            print("Config:", CONFIGURATIONS[config_index], "Current Load:", current_load)
+
+        if CONFIGURATIONS[config_index] != self.curr_config:
+            self.curr_config = CONFIGURATIONS[config_index]
+            return True
+        return False
 

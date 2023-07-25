@@ -1,12 +1,13 @@
 import traci
-from Manager import Manager
 import time
 import argparse
 
 import sys
 sys.path.append('C:\\Projects\\SUMO-SIMULATOR\\ReversibleLanesIntersection')
+sys.path.append('C:\\Projects\\SUMO-SIMULATOR\\ReversibleLanesIntersection\\alda')
 from TrafficGenerator import *
 from utils import *
+from alda.Manager import Manager
 
 MAX_STEPS = 90000  # 10000  # 1h = 360000
 SAVE_PATH = 'testSave.xml'
@@ -39,7 +40,7 @@ def main():
         output_path = get_results_path()
 
     is_gui = False
-    verbose = False
+    verbose = True
 
     traffic_manager = Manager()
     traffic_generator = TrafficGenerator(type="balanced")
@@ -51,7 +52,6 @@ def main():
     while step_cnt < MAX_STEPS:
         curr_config = traffic_manager.get_config()
         sumo_cmd = get_sumo_cmd(curr_config, is_gui=is_gui, results_path=output_path)
-        print("SUMO CMD:", sumo_cmd)
         traci.start(sumo_cmd, verbose=True)
 
         if os.path.exists(SAVE_PATH):
@@ -85,13 +85,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
-'''
-TODO:
-1. Czy dobrze sumo przeskalowuje 100m na 1km. Wyliczylbym czy czas podrozy pojazdu jest prawidlowy.
-Jezeli samochod jedzie 12m/s to powinien przebyc 1km w mniej niz 10s
-
-2. Dodatkowy parametr w FuzzyDetector? Tj. Waiting Time.
-
-3. Jak wchodze w 4 i 5 poziom kongestii - jaka jest srednia predkosc? Jaka jest gęstość?    
-'''

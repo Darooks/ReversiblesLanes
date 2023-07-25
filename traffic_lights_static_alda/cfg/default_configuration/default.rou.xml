@@ -1,0 +1,25 @@
+<routes>
+	<vType id="vtypeauto" accel="5" decel="10" sigma="0.0" length="4"
+		   minGap="0" maxSpeed="36" color="1,0,0" probability="1"
+		   carFollowModel="CC" tauEngine="0.5" omegaN="0.2" xi="1" c1="0.5"
+		   lanesCount="4" ccAccel="4" ploegKp="0.2" ploegKd="0.7"
+		   ploegH="0.5" />
+	<!-- minGap is controlled by plexe parameters -->
+	
+	<route id="north_west" edges="north_edge_start west_edge_end" />
+	<route id="north_south" edges="north_edge_start south_edge_end" />
+	<route id="north_east" edges="north_edge_start east_edge_end" />
+	
+	<route id="west_north" edges="west_edge_start north_edge_end" />
+	<route id="west_east" edges="west_edge_start east_edge_end" />
+	<route id="west_south" edges="west_edge_start south_edge_end" />
+	
+	<route id="south_east" edges="south_edge_start east_edge_end" />
+	<route id="south_north" edges="south_edge_start north_edge_end" />
+	<route id="south_west" edges="south_edge_start west_edge_end" />
+	
+	<route id="east_north" edges="east_edge_start north_edge_end" />
+	<route id="east_west" edges="east_edge_start west_edge_end" />
+	<route id="east_south" edges="east_edge_start south_edge_end" />
+	
+</routes>
