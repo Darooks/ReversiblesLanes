@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- generated on 2023-07-22 12:22:50 by Eclipse SUMO netedit Version 1.10.0
+<configuration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/netconvertConfiguration.xsd">
+
+    <input>
+        <sumo-net-file value="C:\Projects\SUMO-SIMULATOR\ReversibleLanesIntersection\traffic_lights_static\cfg\e_configuration\e.net.xml"/>
+    </input>
+
+    <output>
+        <output-file value="C:\Projects\SUMO-SIMULATOR\ReversibleLanesIntersection\traffic_lights_static\cfg\e_configuration\e.net.xml"/>
+    </output>
+
+    <processing>
+        <geometry.min-radius.fix.railways value="false"/>
+        <geometry.max-grade.fix value="false"/>
+        <offset.disable-normalization value="true"/>
+        <lefthand value="false"/>
+    </processing>
+
+    <junctions>
+        <no-turnarounds value="true"/>
+        <junctions.corner-detail value="5"/>
+        <junctions.limit-turn-speed value="5.5"/>
+        <rectangular-lane-cut value="false"/>
+    </junctions>
+
+    <pedestrian>
+        <walkingareas value="false"/>
+    </pedestrian>
+
+    <report>
+        <aggregate-warnings value="5"/>
+    </report>
+
+</configuration>
+-->
+
+<net version="1.9" junctionCornerDetail="5" limitTurnSpeed="5.50" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/net_file.xsd">
+
+    <location netOffset="0.00,0.00" convBoundary="-100.00,0.00,100.00,200.00" origBoundary="-10000000000.00,-10000000000.00,10000000000.00,10000000000.00" projParameter="!"/>
+
+    <edge id=":intersection_vertice_0" function="internal">
+        <lane id=":intersection_vertice_0_0" index="0" speed="6.51" length="9.03" shape="-4.80,113.60 -5.15,111.15 -6.20,109.40 -7.95,108.35 -10.40,108.00"/>
+    </edge>
+    <edge id=":intersection_vertice_1" function="internal">
+        <lane id=":intersection_vertice_1_0" index="0" speed="13.89" length="20.80" shape="-4.80,113.60 -4.80,92.80"/>
+        <lane id=":intersection_vertice_1_1" index="1" speed="13.89" length="20.80" shape="-1.60,113.60 -1.60,92.80"/>
+    </edge>
+    <edge id=":intersection_vertice_3" function="internal">
+        <lane id=":intersection_vertice_3_0" index="0" speed="9.84" length="8.68" shape="-1.60,113.60 -0.85,106.95 0.00,105.16"/>
+    </edge>
+    <edge id=":intersection_vertice_16" function="internal">
+        <lane id=":intersection_vertice_16_0" index="0" speed="9.84" length="13.32" shape="0.00,105.16 1.40,102.20 5.15,99.35 10.40,98.40"/>
+    </edge>
+    <edge id=":intersection_vertice_4" function="internal">
+        <lane id=":intersection_vertice_4_0" index="0" speed="6.51" length="9.03" shape="10.40,108.00 7.95,108.35 6.20,109.40 5.15,111.15 4.80,113.60"/>
+    </edge>
+    <edge id=":intersection_vertice_5" function="internal">
+        <lane id=":intersection_vertice_5_0" index="0" speed="13.89" length="20.80" shape="10.40,108.00 -10.40,108.00"/>
+        <lane id=":intersection_vertice_5_1" index="1" speed="13.89" length="20.80" shape="10.40,104.80 -10.40,104.80"/>
+        <lane id=":intersection_vertice_5_2" index="2" speed="13.89" length="20.80" shape="10.40,101.60 -10.40,101.60"/>
+    </edge>
+    <edge id=":intersection_vertice_8" function="internal">
+        <lane id=":intersection_vertice_8_0" index="0" speed="8.67" length="7.89" shape="10.40,101.60 5.15,101.05 2.76,100.00"/>
+    </edge>
+    <edge id=":intersection_vertice_17" function="internal">
+        <lane id=":intersection_vertice_17_0" index="0" speed="8.67" length="8.97" shape="2.76,100.00 1.40,99.40 -0.85,96.65 -1.60,92.80"/>
+    </edge>
+    <edge id=":intersection_vertice_9" function="internal">
+        <lane id=":intersection_vertice_9_0" index="0" speed="6.51" length="9.03" shape="4.80,92.80 5.15,95.25 6.20,97.00 7.95,98.05 10.40,98.40"/>
+    </edge>
+    <edge id=":intersection_vertice_10" function="internal">
+        <lane id=":intersection_vertice_10_0" index="0" speed="13.89" length="20.80" shape="4.80,92.80 4.80,113.60"/>
+        <lane id=":intersection_vertice_10_1" index="1" speed="13.89" length="20.80" shape="1.60,92.80 1.60,113.60"/>
+    </edge>
+    <edge id=":intersection_vertice_12" function="internal">
+        <lane id=":intersection_vertice_12_0" index="0" speed="8.67" length="5.26" shape="1.60,92.80 0.85,96.65 -0.00,97.69"/>
+    </edge>
+    <edge id=":intersection_vertice_18" function="internal">
+        <lane id=":intersection_vertice_18_0" index="0" speed="8.67" length="11.59" shape="-0.00,97.69 -1.40,99.40 -5.15,101.05 -10.40,101.60"/>
+    </edge>
+    <edge id=":intersection_vertice_13" function="internal">
+        <lane id=":intersection_vertice_13_0" index="0" speed="6.51" length="9.03" shape="-10.40,98.40 -7.95,98.05 -6.20,97.00 -5.15,95.25 -4.80,92.80"/>
+    </edge>
+    <edge id=":intersection_vertice_14" function="internal">
+        <lane id=":intersection_vertice_14_0" index="0" speed="13.89" length="20.80" shape="-10.40,98.40 10.40,98.40"/>
+    </edge>
+    <edge id=":intersection_vertice_15" function="internal">
+        <lane id=":intersection_vertice_15_0" index="0" speed="9.84" length="6.41" shape="-10.40,98.40 -5.15,99.35 -4.29,100.00"/>
+    </edge>
+    <edge id=":intersection_vertice_19" function="internal">
+        <lane id=":intersection_vertice_19_0" index="0" speed="9.84" length="15.58" shape="-4.29,100.00 -1.40,102.20 0.85,106.95 1.60,113.60"/>
+    </edge>
+
+    <edge id="east_edge_end" from="intersection_vertice" to="east_vertice" priority="-1" length="1000.00">
+        <lane id="east_edge_end_0" index="0" speed="13.89" length="1000.00" shape="10.40,98.40 100.00,98.40"/>
+    </edge>
+    <edge id="east_edge_start" from="east_vertice" to="intersection_vertice" priority="-1" length="1000.00">
+        <lane id="east_edge_start_0" index="0" speed="13.89" length="1000.00" shape="100.00,108.00 10.40,108.00"/>
+        <lane id="east_edge_start_1" index="1" speed="13.89" length="1000.00" shape="100.00,104.80 10.40,104.80"/>
+        <lane id="east_edge_start_2" index="2" speed="13.89" length="1000.00" shape="100.00,101.60 10.40,101.60"/>
+    </edge>
+    <edge id="north_edge_end" from="intersection_vertice" to="north_vertice" priority="-1" length="1000.00">
+        <lane id="north_edge_end_0" index="0" speed="13.89" length="1000.00" shape="4.80,113.60 4.80,200.00"/>
+        <lane id="north_edge_end_1" index="1" speed="13.89" length="1000.00" shape="1.60,113.60 1.60,200.00"/>
+    </edge>
+    <edge id="north_edge_start" from="north_vertice" to="intersection_vertice" priority="-1" length="1000.00">
+        <lane id="north_edge_start_0" index="0" speed="13.89" length="1000.00" shape="-4.80,200.00 -4.80,113.60"/>
+        <lane id="north_edge_start_1" index="1" speed="13.89" length="1000.00" shape="-1.60,200.00 -1.60,113.60"/>
+    </edge>
+    <edge id="south_edge_end" from="intersection_vertice" to="south_vertice" priority="-1" length="1000.00">
+        <lane id="south_edge_end_0" index="0" speed="13.89" length="1000.00" shape="-4.80,92.80 -4.80,0.00"/>
+        <lane id="south_edge_end_1" index="1" speed="13.89" length="1000.00" shape="-1.60,92.80 -1.60,0.00"/>
+    </edge>
+    <edge id="south_edge_start" from="south_vertice" to="intersection_vertice" priority="-1" length="1000.00">
+        <lane id="south_edge_start_0" index="0" speed="13.89" length="1000.00" shape="4.80,0.00 4.80,92.80"/>
+        <lane id="south_edge_start_1" index="1" speed="13.89" length="1000.00" shape="1.60,0.00 1.60,92.80"/>
+    </edge>
+    <edge id="west_edge_end" from="intersection_vertice" to="west_vertice" priority="-1" length="1000.00">
+        <lane id="west_edge_end_0" index="0" speed="13.89" length="1000.00" shape="-10.40,108.00 -100.00,108.00"/>
+        <lane id="west_edge_end_1" index="1" speed="13.89" length="1000.00" shape="-10.40,104.80 -100.00,104.80"/>
+        <lane id="west_edge_end_2" index="2" speed="13.89" length="1000.00" shape="-10.40,101.60 -100.00,101.60"/>
+    </edge>
+    <edge id="west_edge_start" from="west_vertice" to="intersection_vertice" priority="-1" length="1000.00">
+        <lane id="west_edge_start_0" index="0" speed="13.89" length="1000.00" shape="-100.00,98.40 -10.40,98.40"/>
+    </edge>
+
+    <tlLogic id="intersection_vertice" type="static" programID="0" offset="0">
+        <phase duration="42" state="rrrrGGGGgrrrrGGg"/>
+        <phase duration="3"  state="rrrryyyyyrrrryyy"/>
+        <phase duration="42" state="GGGgrrrrrGGGgrrr"/>
+        <phase duration="3"  state="yyyyrrrrryyyyrrr"/>
+    </tlLogic>
+    <tlLogic id="intersection_vertice" type="static" programID="all_red" offset="0">
+        <phase duration="42" state="rrrrrrrrrrrrrrrr"/>
+        <phase duration="3"  state="rrrrrrrrrrrrrrrr"/>
+        <phase duration="42" state="rrrrrrrrrrrrrrrr"/>
+        <phase duration="3"  state="rrrrrrrrrrrrrrrr"/>
+    </tlLogic>
+
+    <junction id="east_vertice" type="dead_end" x="100.00" y="100.00" incLanes="east_edge_end_0" intLanes="" shape="100.00,100.00 100.00,96.80 100.00,100.00"/>
+    <junction id="intersection_vertice" type="traffic_light" x="0.00" y="100.00" incLanes="north_edge_start_0 north_edge_start_1 east_edge_start_0 east_edge_start_1 east_edge_start_2 south_edge_start_0 south_edge_start_1 west_edge_start_0" intLanes=":intersection_vertice_0_0 :intersection_vertice_1_0 :intersection_vertice_1_1 :intersection_vertice_16_0 :intersection_vertice_4_0 :intersection_vertice_5_0 :intersection_vertice_5_1 :intersection_vertice_5_2 :intersection_vertice_17_0 :intersection_vertice_9_0 :intersection_vertice_10_0 :intersection_vertice_10_1 :intersection_vertice_18_0 :intersection_vertice_13_0 :intersection_vertice_14_0 :intersection_vertice_19_0" shape="-6.40,113.60 6.40,113.60 6.84,111.38 7.40,110.60 8.18,110.04 9.18,109.71 10.40,109.60 10.40,96.80 8.18,96.36 7.40,95.80 6.84,95.02 6.51,94.02 6.40,92.80 -6.40,92.80 -6.84,95.02 -7.40,95.80 -8.18,96.36 -9.18,96.69 -10.40,96.80 -10.40,109.60 -8.18,110.04 -7.40,110.60 -6.84,111.38 -6.51,112.38">
+        <request index="0"  response="0000000011100000" foes="0000000011100000" cont="0"/>
+        <request index="1"  response="1110000111100000" foes="1111000111100000" cont="0"/>
+        <request index="2"  response="1110000111100000" foes="1111000111100000" cont="0"/>
+        <request index="3"  response="1100111111100000" foes="1100111111100000" cont="1"/>
+        <request index="4"  response="0000000000000000" foes="0000110000000000" cont="0"/>
+        <request index="5"  response="0001000000001000" foes="1001110000001111" cont="0"/>
+        <request index="6"  response="0001000000001000" foes="1001110000001111" cont="0"/>
+        <request index="7"  response="0001000000001000" foes="1001110000001111" cont="0"/>
+        <request index="8"  response="0101000000001000" foes="0101110000001110" cont="1"/>
+        <request index="9"  response="0100000000000000" foes="0100000000001000" cont="0"/>
+        <request index="10" response="1100000111110000" foes="1100000111111000" cont="0"/>
+        <request index="11" response="1100000111110000" foes="1100000111111000" cont="0"/>
+        <request index="12" response="1100000111100110" foes="1100000111100110" cont="1"/>
+        <request index="13" response="0000000000000000" foes="0000000000000110" cont="0"/>
+        <request index="14" response="0001000000001000" foes="0001111100001110" cont="0"/>
+        <request index="15" response="0001000011101000" foes="0001110011101110" cont="1"/>
+    </junction>
+    <junction id="north_vertice" type="dead_end" x="0.00" y="200.00" incLanes="north_edge_end_0 north_edge_end_1" intLanes="" shape="0.00,200.00 6.40,200.00 0.00,200.00"/>
+    <junction id="south_vertice" type="dead_end" x="0.00" y="0.00" incLanes="south_edge_end_0 south_edge_end_1" intLanes="" shape="0.00,0.00 -6.40,0.00 0.00,0.00"/>
+    <junction id="west_vertice" type="dead_end" x="-100.00" y="100.00" incLanes="west_edge_end_0 west_edge_end_1 west_edge_end_2" intLanes="" shape="-100.00,100.00 -100.00,109.60 -100.00,100.00"/>
+
+    <junction id=":intersection_vertice_16_0" type="internal" x="0.00" y="105.16" incLanes=":intersection_vertice_3_0 south_edge_start_0 south_edge_start_1" intLanes=":intersection_vertice_5_0 :intersection_vertice_5_1 :intersection_vertice_5_2 :intersection_vertice_8_0 :intersection_vertice_9_0 :intersection_vertice_10_0 :intersection_vertice_10_1 :intersection_vertice_14_0 :intersection_vertice_15_0"/>
+    <junction id=":intersection_vertice_17_0" type="internal" x="2.76" y="100.00" incLanes=":intersection_vertice_8_0 west_edge_start_0" intLanes=":intersection_vertice_1_0 :intersection_vertice_1_1 :intersection_vertice_3_0 :intersection_vertice_10_0 :intersection_vertice_10_1 :intersection_vertice_12_0 :intersection_vertice_13_0 :intersection_vertice_14_0"/>
+    <junction id=":intersection_vertice_18_0" type="internal" x="-0.00" y="97.69" incLanes=":intersection_vertice_12_0 north_edge_start_0 north_edge_start_1" intLanes=":intersection_vertice_0_0 :intersection_vertice_1_0 :intersection_vertice_1_1 :intersection_vertice_5_0 :intersection_vertice_5_1 :intersection_vertice_5_2 :intersection_vertice_8_0 :intersection_vertice_14_0 :intersection_vertice_15_0"/>
+    <junction id=":intersection_vertice_19_0" type="internal" x="-4.29" y="100.00" incLanes=":intersection_vertice_15_0 east_edge_start_0 east_edge_start_1 east_edge_start_2" intLanes=":intersection_vertice_1_0 :intersection_vertice_1_1 :intersection_vertice_3_0 :intersection_vertice_4_0 :intersection_vertice_5_0 :intersection_vertice_5_1 :intersection_vertice_5_2 :intersection_vertice_10_0 :intersection_vertice_10_1 :intersection_vertice_12_0"/>
+
+    <connection from="east_edge_start" to="north_edge_end" fromLane="0" toLane="0" via=":intersection_vertice_4_0" tl="intersection_vertice" linkIndex="4" dir="r" state="O"/>
+    <connection from="east_edge_start" to="west_edge_end" fromLane="0" toLane="0" via=":intersection_vertice_5_0" tl="intersection_vertice" linkIndex="5" dir="s" state="O"/>
+    <connection from="east_edge_start" to="west_edge_end" fromLane="1" toLane="1" via=":intersection_vertice_5_1" tl="intersection_vertice" linkIndex="6" dir="s" state="O"/>
+    <connection from="east_edge_start" to="west_edge_end" fromLane="2" toLane="2" via=":intersection_vertice_5_2" tl="intersection_vertice" linkIndex="7" dir="s" state="O"/>
+    <connection from="east_edge_start" to="south_edge_end" fromLane="2" toLane="1" via=":intersection_vertice_8_0" tl="intersection_vertice" linkIndex="8" dir="l" state="o"/>
+    <connection from="north_edge_start" to="west_edge_end" fromLane="0" toLane="0" via=":intersection_vertice_0_0" tl="intersection_vertice" linkIndex="0" dir="r" state="o"/>
+    <connection from="north_edge_start" to="south_edge_end" fromLane="0" toLane="0" via=":intersection_vertice_1_0" tl="intersection_vertice" linkIndex="1" dir="s" state="o"/>
+    <connection from="north_edge_start" to="south_edge_end" fromLane="1" toLane="1" via=":intersection_vertice_1_1" tl="intersection_vertice" linkIndex="2" dir="s" state="o"/>
+    <connection from="north_edge_start" to="east_edge_end" fromLane="1" toLane="0" via=":intersection_vertice_3_0" tl="intersection_vertice" linkIndex="3" dir="l" state="o"/>
+    <connection from="south_edge_start" to="east_edge_end" fromLane="0" toLane="0" via=":intersection_vertice_9_0" tl="intersection_vertice" linkIndex="9" dir="r" state="o"/>
+    <connection from="south_edge_start" to="north_edge_end" fromLane="0" toLane="0" via=":intersection_vertice_10_0" tl="intersection_vertice" linkIndex="10" dir="s" state="o"/>
+    <connection from="south_edge_start" to="north_edge_end" fromLane="1" toLane="1" via=":intersection_vertice_10_1" tl="intersection_vertice" linkIndex="11" dir="s" state="o"/>
+    <connection from="south_edge_start" to="west_edge_end" fromLane="1" toLane="2" via=":intersection_vertice_12_0" tl="intersection_vertice" linkIndex="12" dir="l" state="o"/>
+    <connection from="west_edge_start" to="south_edge_end" fromLane="0" toLane="0" via=":intersection_vertice_13_0" tl="intersection_vertice" linkIndex="13" dir="r" state="O"/>
+    <connection from="west_edge_start" to="east_edge_end" fromLane="0" toLane="0" via=":intersection_vertice_14_0" tl="intersection_vertice" linkIndex="14" dir="s" state="O"/>
+    <connection from="west_edge_start" to="north_edge_end" fromLane="0" toLane="1" via=":intersection_vertice_15_0" tl="intersection_vertice" linkIndex="15" dir="l" state="o"/>
+
+    <connection from=":intersection_vertice_0" to="west_edge_end" fromLane="0" toLane="0" dir="r" state="M"/>
+    <connection from=":intersection_vertice_1" to="south_edge_end" fromLane="0" toLane="0" dir="s" state="M"/>
+    <connection from=":intersection_vertice_1" to="south_edge_end" fromLane="1" toLane="1" dir="s" state="M"/>
+    <connection from=":intersection_vertice_3" to="east_edge_end" fromLane="0" toLane="0" via=":intersection_vertice_16_0" dir="l" state="m"/>
+    <connection from=":intersection_vertice_16" to="east_edge_end" fromLane="0" toLane="0" dir="l" state="M"/>
+    <connection from=":intersection_vertice_4" to="north_edge_end" fromLane="0" toLane="0" dir="r" state="M"/>
+    <connection from=":intersection_vertice_5" to="west_edge_end" fromLane="0" toLane="0" dir="s" state="M"/>
+    <connection from=":intersection_vertice_5" to="west_edge_end" fromLane="1" toLane="1" dir="s" state="M"/>
+    <connection from=":intersection_vertice_5" to="west_edge_end" fromLane="2" toLane="2" dir="s" state="M"/>
+    <connection from=":intersection_vertice_8" to="south_edge_end" fromLane="0" toLane="1" via=":intersection_vertice_17_0" dir="l" state="m"/>
+    <connection from=":intersection_vertice_17" to="south_edge_end" fromLane="0" toLane="1" dir="l" state="M"/>
+    <connection from=":intersection_vertice_9" to="east_edge_end" fromLane="0" toLane="0" dir="r" state="M"/>
+    <connection from=":intersection_vertice_10" to="north_edge_end" fromLane="0" toLane="0" dir="s" state="M"/>
+    <connection from=":intersection_vertice_10" to="north_edge_end" fromLane="1" toLane="1" dir="s" state="M"/>
+    <connection from=":intersection_vertice_12" to="west_edge_end" fromLane="0" toLane="2" via=":intersection_vertice_18_0" dir="l" state="m"/>
+    <connection from=":intersection_vertice_18" to="west_edge_end" fromLane="0" toLane="2" dir="l" state="M"/>
+    <connection from=":intersection_vertice_13" to="south_edge_end" fromLane="0" toLane="0" dir="r" state="M"/>
+    <connection from=":intersection_vertice_14" to="east_edge_end" fromLane="0" toLane="0" dir="s" state="M"/>
+    <connection from=":intersection_vertice_15" to="north_edge_end" fromLane="0" toLane="1" via=":intersection_vertice_19_0" dir="l" state="m"/>
+    <connection from=":intersection_vertice_19" to="north_edge_end" fromLane="0" toLane="1" dir="l" state="M"/>
+
+</net>
